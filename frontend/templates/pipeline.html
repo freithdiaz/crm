@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cortex CRM - {{ title }}</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar glass">
+            <div class="logo">
+                <i class="fa-solid fa-cube glow-text"></i>
+                <span class="gradient-text">Cortex</span>
+            </div>
+            <nav class="nav-menu">
+                <a href="/" class="nav-item"><i class="fa-solid fa-chart-pie"></i> Panel</a>
+                <a href="/leads" class="nav-item"><i class="fa-solid fa-address-book"></i> Prospectos</a>
+                <a href="/pipeline" class="nav-item active"><i class="fa-solid fa-table-columns"></i> Embudo</a>
+                <a href="/settings" class="nav-item"><i class="fa-solid fa-gear"></i> Ajustes</a>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="user-profile">
+                    <img src="https://ui-avatars.com/api/?name=Admin&background=random" alt="User">
+                    <div class="user-info">
+                        <h6>{{ user_name }}</h6>
+                        <span>Plan Pro</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header glass">
+                <div class="search-bar">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Buscar tratos...">
+                </div>
+                <div class="header-actions">
+                    <button class="ai-button glass">
+                        <i class="fa-solid fa-plus glow-text"></i> Nuevo Trato
+                    </button>
+                    <i class="fa-regular fa-bell notification"></i>
+                </div>
+            </header>
+
+            <!-- Kanban Board -->
+            <div class="kanban-board">
+                <!-- Column: Prospecto -->
+                <div class="kanban-column glass" id="Prospecto" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="column-header">
+                        <h5>Prospecto</h5>
+                        <span class="badge" id="count-Prospecto">0</span>
+                    </div>
+                    <div class="column-body" id="body-Prospecto"></div>
+                </div>
+
+                <!-- Column: Contactado -->
+                <div class="kanban-column glass" id="Contactado" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="column-header">
+                        <h5>Contactado</h5>
+                        <span class="badge" id="count-Contactado">0</span>
+                    </div>
+                    <div class="column-body" id="body-Contactado"></div>
+                </div>
+
+                <!-- Column: Calificado -->
+                <div class="kanban-column glass" id="Calificado" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="column-header">
+                        <h5>Calificado</h5>
+                        <span class="badge" id="count-Calificado">0</span>
+                    </div>
+                    <div class="column-body" id="body-Calificado"></div>
+                </div>
+
+                <!-- Column: Propuesta -->
+                <div class="kanban-column glass" id="Propuesta" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="column-header">
+                        <h5>Propuesta</h5>
+                        <span class="badge" id="count-Propuesta">0</span>
+                    </div>
+                    <div class="column-body" id="body-Propuesta"></div>
+                </div>
+
+                <!-- Column: Ganado -->
+                <div class="kanban-column glass" id="Ganado" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="column-header">
+                        <h5>Ganado</h5>
+                        <span class="badge" id="count-Ganado">0</span>
+                    </div>
+                    <div class="column-body" id="body-Ganado"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="/static/js/pipeline.js"></script>
+</body>
+</html>

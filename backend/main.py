@@ -4,12 +4,14 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 import os
 
-from backend.api import leads
+from backend.api import leads, deals
 
 app = FastAPI(title="Cortex CRM", description="Premium AI-Powered CRM")
 
 # Include Routers
 app.include_router(leads.router)
+app.include_router(deals.router)
+
 
 # Mount Static Files
 static_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "../frontend/static"))
@@ -33,9 +35,18 @@ async def dashboard(request: Request):
 async def leads_page(request: Request):
     return templates.TemplateResponse("leads.html", {
         "request": request,
-        "title": "Leads",
+        "title": "Prospectos",
         "user_name": "Administrador"
     })
+
+@app.get("/pipeline", response_class=HTMLResponse)
+async def pipeline_page(request: Request):
+    return templates.TemplateResponse("pipeline.html", {
+        "request": request,
+        "title": "Embudo",
+        "user_name": "Administrador"
+    })
+
 
 
 # To run: uvicorn backend.main:app --reload

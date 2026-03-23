@@ -5,7 +5,8 @@ sys.path.append(os.path.abspath(os.path.dirname(__file__)))
 
 from sqlmodel import Session
 from backend.database import engine, create_db_and_tables
-from backend.models import Lead
+from backend.models import Lead, Deal
+
 
 def seed_data():
     with Session(engine) as session:
@@ -26,8 +27,20 @@ def seed_data():
         
         for lead in sample_leads:
             session.add(lead)
+        session.commit() # Commit to get IDs
+
+        # Seed Deals linked to Leads
+        print("Sembrando tratos (deals)...")
+        deals = [
+            Deal(title="SaaS Enterprise setup", lead_id=1, stage="Prospecto", amount=15000.0, probability=20),
+            Deal(title="Cloud Migration Audit", lead_id=2, stage="Calificado", amount=45000.0, probability=60),
+            Deal(title="Soporte Anual Premium", lead_id=3, stage="Contactado", amount=8000.0, probability=40),
+        ]
+        for deal in deals:
+            session.add(deal)
         session.commit()
         print("¡Datos sembrados con éxito!")
+
 
 if __name__ == "__main__":
     create_db_and_tables()

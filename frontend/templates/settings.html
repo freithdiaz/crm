@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cortex CRM - {{ title }}</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar glass">
+            <div class="logo">
+                <i class="fa-solid fa-cube glow-text"></i>
+                <span class="gradient-text">Cortex</span>
+            </div>
+            <nav class="nav-menu">
+                <a href="/" class="nav-item"><i class="fa-solid fa-chart-pie"></i> Panel</a>
+                <a href="/leads" class="nav-item"><i class="fa-solid fa-address-book"></i> Prospectos</a>
+                <a href="/pipeline" class="nav-item"><i class="fa-solid fa-table-columns"></i> Embudo</a>
+                <a href="/settings" class="nav-item active"><i class="fa-solid fa-gear"></i> Ajustes</a>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="user-profile">
+                    <img src="https://ui-avatars.com/api/?name=Admin&background=random" alt="User">
+                    <div class="user-info">
+                        <h6>{{ user_name }}</h6>
+                        <span>Plan Pro</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="header glass">
+                <div class="search-bar">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Buscar en Cortex...">
+                </div>
+                <div class="header-actions">
+                    <button class="ai-button glass">
+                        <i class="fa-solid fa-bolt glow-text"></i> AI Insights
+                    </button>
+                    <i class="fa-regular fa-bell notification"></i>
+                </div>
+            </header>
+
+            <div class="settings-container">
+                <div class="settings-header">
+                    <h2><i class="fa-solid fa-gear"></i> Configuración</h2>
+                    <p>Administra las opciones de tu CRM</p>
+                </div>
+
+                <div class="settings-grid">
+                    <div class="settings-section glass">
+                        <h3><i class="fa-solid fa-user"></i> Perfil</h3>
+                        <div class="form-group">
+                            <label>Nombre</label>
+                            <input type="text" value="{{ user_name }}" class="glass-input">
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" value="admin@cortex.com" class="glass-input">
+                        </div>
+                        <div class="form-group">
+                            <label>Zona Horaria</label>
+                            <select class="glass-input">
+                                <option>America/New_York (UTC-5)</option>
+                                <option>America/Mexico_City (UTC-6)</option>
+                                <option>Europe/Madrid (UTC+1)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="settings-section glass">
+                        <h3><i class="fa-solid fa-bell"></i> Notificaciones</h3>
+                        <div class="toggle-group">
+                            <label>
+                                <span>Email de nuevos leads</span>
+                                <input type="checkbox" checked>
+                            </label>
+                            <label>
+                                <span>Alertas de Deals próximos a cerrar</span>
+                                <input type="checkbox" checked>
+                            </label>
+                            <label>
+                                <span>Resumen semanal de actividad</span>
+                                <input type="checkbox">
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="settings-section glass">
+                        <h3><i class="fa-solid fa-robot"></i> Configuración AI</h3>
+                        <div class="form-group">
+                            <label>Nivel de análisis de leads</label>
+                            <select class="glass-input">
+                                <option>Básico - Solo datos</option>
+                                <option selected>Avanzado - Análisis completo</option>
+                                <option>Premium - Predicción de comportamiento</option>
+                            </select>
+                        </div>
+                        <div class="toggle-group">
+                            <label>
+                                <span>Auto-generar resúmenes</span>
+                                <input type="checkbox" checked>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="settings-section glass">
+                        <h3><i class="fa-solid fa-database"></i> Datos</h3>
+                        <div class="form-group">
+                            <label>Pipeline por defecto</label>
+                            <select class="glass-input">
+                                <option>Ventas</option>
+                                <option>Onboarding</option>
+                                <option>Soporte</option>
+                            </select>
+                        </div>
+                        <div class="button-group">
+                            <button class="btn-primary"><i class="fa-solid fa-download"></i> Exportar Datos</button>
+                            <button class="btn-danger"><i class="fa-solid fa-trash"></i> Limpiar DB</button>
+                        </div>
+                    </div>
+
+                    <div class="settings-section glass">
+                        <h3><i class="fa-solid fa-palette"></i> Apariencia</h3>
+                        <div class="toggle-group">
+                            <label>
+                                <span>Modo oscuro</span>
+                                <input type="checkbox" checked>
+                            </label>
+                            <label>
+                                <span>Animaciones suaves</span>
+                                <input type="checkbox" checked>
+                            </label>
+                            <label>
+                                <span>Mostrar tooltips</span>
+                                <input type="checkbox" checked>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="settings-section glass">
+                        <h3><i class="fa-solid fa-plug"></i> Integraciones</h3>
+                        <div class="integration-list">
+                            <div class="integration-item">
+                                <span><i class="fa-brands fa-google"></i> Google Calendar</span>
+                                <button class="btn-small">Conectar</button>
+                            </div>
+                            <div class="integration-item">
+                                <span><i class="fa-brands fa-slack"></i> Slack</span>
+                                <button class="btn-small">Conectar</button>
+                            </div>
+                            <div class="integration-item">
+                                <span><i class="fa-brands fa-mailchimp"></i> Mailchimp</span>
+                                <button class="btn-small disabled" disabled>Próximamente</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="settings-footer">
+                    <button class="btn-primary"><i class="fa-solid fa-save"></i> Guardar Cambios</button>
+                    <button class="btn-secondary">Cancelar</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="/static/js/main.js"></script>
+</body>
+</html>

@@ -47,6 +47,14 @@ async def pipeline_page(request: Request):
         "user_name": "Administrador"
     })
 
+@app.get("/settings", response_class=HTMLResponse)
+async def settings_page(request: Request):
+    return templates.TemplateResponse("settings.html", {
+        "request": request,
+        "title": "Ajustes",
+        "user_name": "Administrador"
+    })
+
 
 
 # To run: uvicorn backend.main:app --reload

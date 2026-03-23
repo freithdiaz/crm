@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cortex CRM - {{ title }}</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <!-- FontAwesome & Lucide Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar glass">
+            <div class="logo">
+                <i class="fa-solid fa-cube glow-text"></i>
+                <span class="gradient-text">Cortex</span>
+            </div>
+            <nav class="nav-menu">
+                <a href="/" class="nav-item active"><i class="fa-solid fa-chart-pie"></i> Panel</a>
+                <a href="/leads" class="nav-item"><i class="fa-solid fa-address-book"></i> Prospectos</a>
+                <a href="/pipeline" class="nav-item"><i class="fa-solid fa-table-columns"></i> Embudo</a>
+                <a href="/settings" class="nav-item"><i class="fa-solid fa-gear"></i> Ajustes</a>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="user-profile">
+                    <img src="https://ui-avatars.com/api/?name=Admin&background=random" alt="User">
+                    <div class="user-info">
+                        <h6>{{ user_name }}</h6>
+                        <span>Plan Pro</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header glass">
+                <div class="search-bar">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Buscar en Cortex...">
+                </div>
+                <div class="header-actions">
+                    <button class="ai-button glass">
+                        <i class="fa-solid fa-bolt glow-text"></i> AI Insights
+                    </button>
+                    <i class="fa-regular fa-bell notification"></i>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <div class="dashboard-grid">
+                <!-- KPI Cards -->
+                <div class="kpi-container">
+                    <div class="kpi-card glass hover-glow">
+                        <div class="kpi-icon purple"><i class="fa-solid fa-dollar-sign"></i></div>
+                        <div class="kpi-data">
+                            <span>Ingresos Totales</span>
+                            <h3>$124,500</h3>
+                            <span class="trend up"><i class="fa-solid fa-arrow-trend-up"></i> +12%</span>
+                        </div>
+                    </div>
+                    <div class="kpi-card glass hover-glow">
+                        <div class="kpi-icon blue"><i class="fa-solid fa-users"></i></div>
+                        <div class="kpi-data">
+                            <span>Leads Activos</span>
+                            <h3>582</h3>
+                            <span class="trend up"><i class="fa-solid fa-arrow-trend-up"></i> +5%</span>
+                        </div>
+                    </div>
+                    <div class="kpi-card glass hover-glow">
+                        <div class="kpi-icon green"><i class="fa-solid fa-handshake"></i></div>
+                        <div class="kpi-data">
+                            <span>Tasa Conversión</span>
+                            <h3>24.5%</h3>
+                            <span class="trend down"><i class="fa-solid fa-arrow-trend-down"></i> -2%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Charts & Activity -->
+                <div class="visuals-row">
+                    <div class="chart-box glass">
+                        <div class="box-header">
+                            <h4>Rendimiento de Ventas</h4>
+                        </div>
+                        <div class="chart-placeholder">
+                            <canvas id="salesChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="activity-box glass">
+                        <div class="box-header">
+                            <h4>Leads Calientes (AI)</h4>
+                        </div>
+                        <div class="activities">
+                            <div class="activity-item">
+                                <div class="badge-dot hot"></div>
+                                <div class="activity-text">
+                                    <p><strong>Juan Pérez</strong></p>
+                                    <span class="subtext">SaaS Enterprise - Alta probabilidad</span>
+                                </div>
+                                <span class="score glass">95</span>
+                            </div>
+                            <div class="activity-item">
+                                <div class="badge-dot hot"></div>
+                                <div class="activity-text">
+                                    <p><strong>Ana Gómez</strong></p>
+                                    <span class="subtext">Cloud Migration - Listo para propuesta</span>
+                                </div>
+                                <span class="score glass">88</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Chart.js via CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/static/js/main.js"></script>
+</body>
+</html>

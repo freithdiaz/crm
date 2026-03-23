@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cortex CRM - {{ title }}</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar glass">
+            <div class="logo">
+                <i class="fa-solid fa-cube glow-text"></i>
+                <span class="gradient-text">Cortex</span>
+            </div>
+            <nav class="nav-menu">
+                <a href="/" class="nav-item"><i class="fa-solid fa-chart-pie"></i> Panel</a>
+                <a href="/leads" class="nav-item active"><i class="fa-solid fa-address-book"></i> Prospectos</a>
+                <a href="/pipeline" class="nav-item"><i class="fa-solid fa-table-columns"></i> Embudo</a>
+                <a href="/settings" class="nav-item"><i class="fa-solid fa-gear"></i> Ajustes</a>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="user-profile">
+                    <img src="https://ui-avatars.com/api/?name=Admin&background=random" alt="User">
+                    <div class="user-info">
+                        <h6>{{ user_name }}</h6>
+                        <span>Plan Pro</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header glass">
+                <div class="search-bar">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="tableSearch" placeholder="Buscar leads...">
+                </div>
+                <div class="header-actions">
+                    <button class="ai-button glass">
+                        <i class="fa-solid fa-plus glow-text"></i> Nuevo Prospecto
+                    </button>
+                    <i class="fa-regular fa-bell notification"></i>
+                </div>
+                </header>
+                
+                <!-- Leads Content -->
+                <div class="leads-container glass">
+                <div class="table-header">
+                    <h4>Directorio de Prospectos</h4>
+                    <div class="filters">
+                        <select id="statusFilter" class="glass-select">
+                            <option value="all">Todos los Estados</option>
+                            <option value="Nuevo">Nuevo</option>
+                            <option value="Contactado">Contactado</option>
+                            <option value="Calificado">Calificado</option>
+                            <option value="Perdido">Perdido</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="table-responsive">
+                    <table class="cortex-table">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Empresa</th>
+                                <th>Email</th>
+                                <th>Estado</th>
+                                <th>Valor</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="leadsTableBody">
+                            <tr>
+                                <td colspan="6" style="text-align:center; padding:2rem;">Cargando leads...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- AI Summary Modal -->
+    <div id="aiModal" class="modal">
+        <div class="modal-content glass">
+            <span class="close-modal">&times;</span>
+            <h4><i class="fa-solid fa-bolt glow-text"></i> AI Summary</h4>
+            <div id="aiSummaryText" class="modal-body">
+                Cargando resumen inteligente...
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/js/leads.js"></script>
+</body>
+</html>

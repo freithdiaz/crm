@@ -1,12 +1,30 @@
 from fastapi import FastAPI, Request
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
+from fastapi.middleware.gzip import GZipMiddleware
 import os
+from contextlib import asynccontextmanager
 
 from backend.api import leads, deals
+from backend.database import create_db_and_tables
 
-app = FastAPI(title="Cortex CRM", description="Premium AI-Powered CRM")
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """Application lifespan handler for startup and shutdown events."""
+    # Startup: Create database tables
+    create_db_and_tables()
+    yield
+    # Shutdown: Cleanup resources if needed
+
+app = FastAPI(
+    title="Cortex CRM",
+    description="Premium AI-Powered CRM",
+    lifespan=lifespan
+)
+
+# Add GZip compression middleware for faster responses
+app.add_middleware(GZipMiddleware, minimum_size=1000)
 
 # Include Routers
 app.include_router(leads.router)
